@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="cursor">
+  <main class="h-full bg-stone-100">
+    <div id="cursor-dot" class="rounded-full h-4 w-4 fixed bg-lime-600 z-10">
+    </div>
+    <div class="flex flex-col h-full">
+      <h1 class="text-2xl text-lime-500 sr-only">cursor</h1>
+      <div id="cursor-area" class="flex-1 bg-white relative grid">
+        <div
+          class="text-stone-200 text-4xl place-self-center pointer-events-none"
+        >
+          scroll area
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-20 h-20 bg-rose-200 p-2 gap-1 text-sm"
+        >
+          <div class="text-stone-500">debug</div>
+          <dd class="text-stone-700 space-x-1">
+            <span class="">x:</span>
+            <span class="" id="cursor-x"></span>
+          </dd>
+          <dd class="text-stone-700 space-x-1">
+            <span class="">y:</span>
+            <span class="" id="cursor-y"></span>
+          </dd>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("hello");
+    const area = document.getElementById("cursor-area");
+    const debugX = document.getElementById("cursor-x");
+    const debugY = document.getElementById("cursor-y");
+    const dot = document.getElementById("cursor-dot");
+    if (!area) return;
+    area.addEventListener("mousemove", (e) => {
+      if (debugX && debugY) {
+        debugX.innerText = e.clientX.toString();
+        debugY.innerText = e.clientY.toString();
+      }
+      if (!dot) return;
+      const x = e.clientX - dot.offsetWidth / 2;
+      const y = e.clientY - dot.offsetHeight / 2;
+      const keyframes = {
+        transform: `translate(${x}px, ${y}px)`,
+      };
+      dot.animate(keyframes, {
+        duration: 800,
+        fill: "forwards",
+        easing: "ease",
+      });
+    });
+  });
+</script>

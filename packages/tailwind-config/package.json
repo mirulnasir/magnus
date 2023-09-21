@@ -1,0 +1,17 @@
+{
+  "name": "@magnus/tailwind-config",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "description": "tailwind config",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
