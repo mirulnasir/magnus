@@ -9,11 +9,11 @@
   "devDependencies": {
     "eslint": "^8.48.0",
     "prettier": "^3.0.3",
-    "tsconfig": "workspace:*",
+    "tsconfig": "*",
     "turbo": "latest"
   },
   "name": "magnus",
-  "packageManager": "pnpm@8.6.1",
+  "packageManager": "bun@1.0.3",
   "workspaces": [
     "apps/*",
     "packages/*"
